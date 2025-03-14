@@ -266,6 +266,10 @@ namespace randomx {
 						// AVX2 init is slower on Zen4
 						initDatasetAVX2 = false;
 						break;
+					case xmrig::ICpuInfo::ARCH_ZEN5:
+						// AVX2 init is 49% faster on Zen5
+						initDatasetAVX2 = true;
+						break;
 					}
 				}
 			}
@@ -1443,6 +1447,6 @@ namespace randomx {
 		emitByte(0x90, code, codePos);
 	}
 
-	alignas(64) InstructionGeneratorX86 JitCompilerX86::engine[257] = {};
+	alignas(64) InstructionGeneratorX86 JitCompilerX86::engine[256] = {};
 
 }
